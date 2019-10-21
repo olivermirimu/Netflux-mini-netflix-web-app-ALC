@@ -1,0 +1,76 @@
+<section class="signUp">
+
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="container-fluid">
+    <h1 class="">Sign Up</h1>
+    <div class="form-row col-md-auto name form-group">
+      <div class="nameGroup col-sm-auto">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control " id="firstName" name="firstName" placeholder="First name" required
+          [(ngModel)]="userDetails.firstName" #firstName="ngModel"
+          [ngClass]="{'is-invalid': form.controls.firstName?.invalid && form.controls.firstName?.touched }" />
+        <div *ngIf="form.controls.firstName?.invalid && form.controls.firstName?.touched" class="alert alert-danger">
+          Please fill in appropriately
+        </div>
+      </div>
+      <div class="nameGroup col-sm-auto">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control"
+          [ngClass]="{'is-invalid': form.controls.lastName?.invalid && form.controls.lastName?.touched }" id="lastName"
+          name="lastName" placeholder="Last name" value="" required [(ngModel)]="userDetails.lastName" />
+        <div *ngIf="form.controls.lastName?.invalid && form.controls.lastName?.touched" class="alert alert-danger">
+          Please fill in appropriately
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-auto col-sm-4">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+        [(ngModel)]="userDetails.email"
+        [ngClass]="{'is-invalid': form.controls.email?.invalid && form.controls.email?.touched }" required />
+      <p *ngIf="form.controls.email?.invalid && form.controls.email?.touched" class="alert alert-danger">Please fill in
+        appropriately</p>
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+        [(ngModel)]="userDetails.password" required>
+      <p *ngIf="form.controls.password?.invalid && form.controls.password?.touched" class="alert alert-danger">
+        This field is required</p>
+    </div>
+    <div class="form-group col-sm-4">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+          (change)="confirmPassword(confirmField)" [(ngModel)]="userDetails.confirmPassword" #confirmField required>
+        <p *ngIf="form.controls.confirmPassword?.invalid && form.controls.confirmPassword?.touched" class="alert alert-danger">
+          Does not match password</p>
+      </div>
+
+    <!-- <div class="form-group plan">
+      <label for="subscription">Select Plan</label>
+      <select multiple class="form-control" id="subscription" name="subscription"
+        [(ngModel)]="userDetails.subscription">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div> -->
+    <div class="form-group col-sm-auto">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="tnC" name="tnC" [(ngModel)]="userDetails.tnC" #tnC="ngModel"
+          required [ngClass]="{'invalid': tnC.invalid && tnC.touched}" />
+        <label class="form-check-label" for="tnC">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback" *ngIf="userDetails?.tnC !== true && tnC?.isDirty">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit form</button>
+    <button class="btn btn-primary" type="reset" [routerLink]="['/welcome']" (click)="cancelSignUp()">Cancel</button>
+  </form>
+  {{userDetails | json}}
+</section>

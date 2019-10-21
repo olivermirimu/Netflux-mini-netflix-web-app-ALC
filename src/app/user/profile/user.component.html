@@ -1,0 +1,76 @@
+<netflux-nav></netflux-nav>
+
+<section class="signUp">
+  <form #profileForm="ngForm" class="container-fluid">
+    <h1 class="">Edit Profile</h1>
+    <div class="form-row col-md-auto name form-group">
+      <div class="nameGroup col-sm-auto">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control " id="firstName" name="firstName" placeholder="First name" required
+          [(ngModel)]="currentUser.firstName" #firstName="ngModel"
+          [ngClass]="{'is-invalid': profileForm.controls.firstName?.invalid && profileForm.controls.firstName?.touched }" />
+        <div *ngIf="profileForm.controls.firstName?.invalid && profileForm.controls.firstName?.touched"
+          class="alert alert-danger">
+          Please fill in appropriately
+        </div>
+      </div>
+      <div class="nameGroup col-sm-auto">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control"
+          [ngClass]="{'is-invalid': profileForm.controls.lastName?.invalid && profileForm.controls.lastName?.touched }"
+          id="lastName" name="lastName" placeholder="Last name" value="" required [(ngModel)]="currentUser.lastName" />
+        <div *ngIf="profileForm.controls.lastName?.invalid && profileForm.controls.lastName?.touched"
+          class="alert alert-danger">
+          Please fill in appropriately
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-auto col-sm-4">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+        [(ngModel)]="currentUser.email"
+        [ngClass]="{'is-invalid': profileForm.controls.email?.invalid && profileForm.controls.email?.touched }"
+        required />
+      <p *ngIf="profileForm.controls.email?.invalid && profileForm.controls.email?.touched" class="alert alert-danger">
+        Please fill in appropriately</p>
+    </div>
+    <div class="form-group">
+      <div class="passwords">
+        <div class="col-sm-4">
+          <label for="password">Current Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+            [(ngModel)]="currentUser.password" required>
+          <p *ngIf="profileForm.controls.password?.invalid && profileForm.controls.password?.touched"
+            class="alert alert-danger">
+            This field is required</p>
+        </div>
+        <button class="changePassword" type="" (click)="editProfile()">Edit Profile</button>
+      </div>
+    </div>
+    <div class="newPasswords form-group" [hidden]="editProfile()">
+      <div class="form-group col-sm-4">
+        <label for="password">New Password</label>
+        <input type="password" class="form-control" id="newPassword" placeholder="New Password" name="newPassworrd"
+          required>
+        <p *ngIf="profileForm.controls.newPassword?.invalid && profileForm.controls.newPassword?.touched"
+          class="alert alert-danger">
+          This field is required</p>
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+          name="confirmPassword" (change)="confirmPassword(confirmField)" [(ngModel)]="currentUser.confirmPassword"
+          #confirmField required>
+        <p *ngIf="profileForm.controls.confirmPassword?.invalid && profileForm.controls.confirmPassword?.touched"
+          class="alert alert-danger">
+          Does not match new password</p>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="saveChanges()">Save</button>
+    <button class="btn btn-primary" type="reset" [routerLink]="['/home']" (click)="cancelSignUp()">Cancel</button>
+  </form>
+  <!-- {{profileForm.value | json}} -->
+  <hr>
+  <netflux-favourites></netflux-favourites>
+</section>

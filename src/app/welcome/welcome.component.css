@@ -1,0 +1,33 @@
+.coverText {
+  margin: auto 0 !important;
+}
+.coverImage {
+  max-height:560px;
+}
+.welcomeBtn {
+  float: right !important;
+}
+
+@media only screen and (min-width:900px) {
+  .welcomeBtn {
+    float: right;
+  }
+}
+.niche, .genres{
+    margin: 30px auto;
+}
+.niche > div{
+    display: inline-block;
+}
+.nicheSlide {
+  width: 18rem;
+}
+h2{
+    text-align: center;
+}
+
+.welcomeBtn button {
+  display: inline-block;
+  background: #4d5250;
+  margin: 0 5px;
+}

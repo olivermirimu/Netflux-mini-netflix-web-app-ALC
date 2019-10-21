@@ -1,0 +1,17 @@
+<netflux-nav></netflux-nav>
+<section class="container-fluid">
+  <div class="card mb-3">
+    <img [src]="movieTitle.cover" class="card-img-top" alt="...">
+    <hr>
+    <h5 class="card-title">{{movieTitle.title}}</h5>
+    <div class="card-body container-fluid row">      
+      <div><img [src]="movieTitle.imageUrl" class="col-md" /></div>
+      <div class="container col-md">
+        <p>releaseYear: {{movieTitle.releaseYear}}</p>
+        <p>duration: {{movieTitle.duration}}</p>
+        <p>rating: {{movieTitle.rating}}</p>
+        <p>genre: {{movieTitle.genre}}</p>
+      </div>
+    </div>
+  </div>
+</section>

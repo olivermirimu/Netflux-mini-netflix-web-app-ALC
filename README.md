@@ -1,3 +1,6 @@
+# Netflux-mini-netflix-web-app-ALC
+This is a project built as  Andela Leraning Community 4.0 phase 2 challenge
+
 # Netflux
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.

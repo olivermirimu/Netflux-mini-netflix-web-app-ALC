@@ -1,0 +1,14 @@
+.social li,
+.social a {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    margin:5px;
+}
+footer {
+    background: gray ;
+    text-align: center;
+}
+.links {
+    margin: 0 auto;
+}

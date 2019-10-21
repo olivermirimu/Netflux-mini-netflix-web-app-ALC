@@ -1,0 +1,13 @@
+li > a .active {
+    color: orange;
+}
+li {
+    text-decoration: none;
+}
+.searchForm {
+    margin: 0 auto;
+}
+.searchForm button {
+    color: ghostwhite ;
+    background:#4f5250 ;
+}
