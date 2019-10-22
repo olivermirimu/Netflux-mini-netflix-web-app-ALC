@@ -3,7 +3,7 @@ import { UserInterface } from '../userInterface';
 import { NgForm } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { UserService } from '../user.service';
-//import { NgForm } from '@angular/forms';
+// import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'netflux-sign-up',
@@ -11,39 +11,36 @@ import { UserService } from '../user.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-
+  isDirty = true;
   constructor(private router: Router, private userService: UserService) { }
   userDetails: UserInterface = {
     id: null,
     firstName: null,
     lastName: null,
     email: null,
-    favourites:[],
-    //subscription: null,
-    //card: null,
+    favourites: [],
+    // subscription: null,
+    // card: null,
     password: null,
     confirmPassword: null,
     tnC: null
-  }
+  };
 
   ngOnInit() {
   }
-
-  isDirty: boolean = true;
   isActive() {
     this.userService.getUser(this.userDetails.email) ? console.log() : console.log(false);
   }
   registerUser() {
     this.userService.saveUser(this.userDetails);
-    this.isActive()
+    this.isActive();
     alert(`${this.userDetails.firstName} registered successfully`);
-    
-    //this.router.navigate(['/success']); * to be implemented
-    //this.isDirty = false;
-    //this.router.navigate(['/home']);
-    //console.log(this.userService.USERS); working but not adding
+    this.router.navigate(['/home']);
+    // this.router.navigate(['/success']); * to be implemented
+    // this.isDirty = false;
+    // this.router.navigate(['/home']);
+    // console.log(this.userService.USERS); working but not adding
   }
-  
   confirmPassword(confirmField) {
     this.userDetails.password === this.userDetails.confirmPassword ? confirmField.invalid = true : confirmField.invalid = false;
   }
@@ -51,9 +48,9 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.registerUser()
-    //this.isActive ? console.log('email already exists') : this.registerUser();
-    //console.log(this.userDetails);
+    this.registerUser();
+    // this.isActive ? console.log('email already exists') : this.registerUser();
+    // console.log(this.userDetails);
   }
 
 }

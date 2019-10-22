@@ -15,58 +15,58 @@ export class UserService {
   }
 
   logInUser(email: string, pass: string) {
-    //change to show invalid email or mpassword and allocate object to 
+    // change to show invalid email or mpassword and allocate object to
     USERS.find(user => user.email === email) ? this.currentUser = USERS.find(user => user.email === email) : this.currentUser = null;
     (this.currentUser.password === pass) ? console.log(`Welcome ${this.currentUser.firstName}`) : this.isAuthenticated = false;
     (user => user.email === email) && (this.currentUser.password === pass) ? this.isAuthenticated = true : this.isAuthenticated = false;
     if ((user => user.email === email) && (this.currentUser.password === pass)) {
       sessionStorage.setItem(this.loggedInUser, this.currentUser.firstName);
-      //sessionStorage.setItem(this.loggedInUser, this.currentUser.firstName)
+      // sessionStorage.setItem(this.loggedInUser, this.currentUser.firstName)
       this.loggedInUser = sessionStorage.getItem(this.loggedInUser);
       this.loggedInUser ? this.isAuthenticated = true : this.isAuthenticated = false;
     }
   }
 
-  //the below doesn't work thus user isn't saved
+  // the below doesn't work thus user isn't saved
   saveUser(user: UserInterface) {
     USERS.push(user);
-    //console.log(USERS);
+    // console.log(USERS);
   }
 
 }
-let USERS = [
+const USERS = [
   {
-    //id?: number,
+    // id?: number,
     firstName: 'billy',
     lastName: 'billy',
     email: 'billy@x.com',
     favourites: ['Captain Marvel', 'Stranger Things'],
-    //subscription: 2,
-    //card: string,
+    // subscription: 2,
+    // card: string,
     password: 'alpha',
-    //tnC?: boolean
+    // tnC?: boolean
   },
   {
-    //id?: number,
+    // id?: number,
     firstName: 'billy',
     lastName: 'nico',
     email: 'nico@x.com',
     favourites: [],
-    //subscription: 2,
-    //card: string,
+    // subscription: 2,
+    // card: string,
     password: 'alpha',
-    //tnC?: boolean
+    // tnC?: boolean
   },
   {
-    //id?: number,
+    // id?: number,
     firstName: 'billy',
     lastName: 'olly',
     email: 'olly@x.com',
     favourites: [],
-    //subscription: 2,
-    //card: string,
+    // subscription: 2,
+    // card: string,
     password: 'alpha',
-    //tnC?: boolean
+    // tnC?: boolean
   }
-]
+];
 
