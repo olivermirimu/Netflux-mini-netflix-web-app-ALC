@@ -15,6 +15,7 @@ li {
   background: #4f5250;
 }
 
-.username {
+.username,
+.github {
   color: honeydew;
 }

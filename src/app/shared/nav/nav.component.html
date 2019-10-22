@@ -11,9 +11,10 @@
         <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home <span
             class="sr-only">(current)</span></a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">Link</a>
-      </li> -->
+      <li class="nav-item github">
+        <a class="nav-link" href="https://github.com/olivermirimu/Netflux-mini-netflix-web-app-ALC" target="_blank">
+          Github Repo</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
@@ -26,9 +27,9 @@
           <a class="dropdown-item" href="#">Documentary</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="" tabindex="-1" aria-disabled="true">Github Repo</a>
-      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>-->
     </ul>
     <form class="form-inline my-2 my-lg-0 " (ngSubmit)="searchMovie(searchTerm)">
       <div class="searchForm">
