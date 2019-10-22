@@ -91,11 +91,11 @@ const MOVIES = [
     plot: '',
     awards: '',
     imageUrl: '/assets/johnWick.jpg',
-    cover: ''
+    cover: '/assets/johnWickC.jpg'
   },
   {
     id: 4,
-    title: 'Stranger Things',
+    title: 'The Sectret Life Of Pets 2',
     releaseYear: '2016-2019',
     duration: '9.2 h',
     rating: '6 / 10',
@@ -105,8 +105,8 @@ const MOVIES = [
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/Cover.jpg',
-    cover: ''
+    imageUrl: '/assets/lifePets.jpg',
+    cover: '/assets/lifePetsC.jpg'
   },
   {
     id: 5,
@@ -124,37 +124,37 @@ const MOVIES = [
     cover: '/assets/captainMarvelC.jpg'
   },
   {
-    id: 1,
-    title: 'Minions 2',
+    id: 6,
+    title: 'Minions',
     releaseYear: '2019',
     duration: '2.1h',
     rating: '7 / 10',
-    genre: 'Action',
+    genre: 'Comedy',
     director: '',
     writer: '',
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/minions.jpg',
+    cover: '/assets/minionsC.jpg'
   },
   {
-    id: 1,
+    id: 7,
     title: 'Girls Trip',
     releaseYear: '2017',
     duration: '2.1h',
     rating: '7 / 10',
-    genre: 'Action',
+    genre: 'Comedy',
     director: '',
     writer: '',
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/girlsTrip.jpg',
+    cover: '/assets/girlsTripC.jpg'
   },
   {
-    id: 1,
+    id: 8,
     title: 'Black Panther',
     releaseYear: '2019',
     duration: '2.1h',
@@ -165,42 +165,42 @@ const MOVIES = [
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/blackPanther.jpg',
+    cover: '/assets/blackPantherC.jpg'
   },
   {
-    id: 1,
-    title: 'The joker',
+    id: 9,
+    title: 'Hobbs and Shaw',
     releaseYear: '2019',
     duration: '2.1h',
     rating: '7 / 10',
-    genre: 'Action',
+    genre: 'Comedy',
     director: '',
     writer: '',
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/hobbsShaw.jpg',
+    cover: '/assets/hobbsShawC.jpg'
   },
   {
-    id: 1,
+    id: 10,
     title: 'The Lion King',
     releaseYear: '2019',
     duration: '2.1h',
     rating: '7 / 10',
-    genre: 'Action',
+    genre: 'Drama',
     director: '',
     writer: '',
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/lionKing.jpg',
+    cover: '/assets/lionKingC.jpg'
   },
   {
-    id: 1,
-    title: 'The Terminator(Dark Fate)',
+    id: 11,
+    title: 'Terminator Salvation',
     releaseYear: '2019',
     duration: '2.1h',
     rating: '8 / 10',
@@ -210,26 +210,26 @@ const MOVIES = [
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/terminatorSalvation.jpg',
+    cover: '/assets/terminatorSalvationC.jpg'
   },
   {
-    id: 1,
+    id: 12,
     title: 'Toy Story 4',
     releaseYear: '2019',
     duration: '2.1h',
     rating: '8 / 10',
-    genre: 'Action',
+    genre: 'Drama',
     director: '',
     writer: '',
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/toyStory4.jpg',
+    cover: '/assets/toyStory4C.jpg'
   },
   {
-    id: 1,
+    id: 13,
     title: 'Suicide Squad',
     releaseYear: '2016',
     duration: '2.1h',
@@ -240,12 +240,12 @@ const MOVIES = [
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/suicideSquad.jpg',
+    cover: '/assets/suicideSquadC.jpg'
   },
   {
-    id: 1,
-    title: 'Big Mouth',
+    id: 14,
+    title: 'Avengers(Infinity War)',
     releaseYear: '2016- 2019',
     duration: '5h',
     rating: '8 / 10',
@@ -255,7 +255,7 @@ const MOVIES = [
     Actors: [],
     plot: '',
     awards: '',
-    imageUrl: '/assets/intoTheSpiderverse.jpg',
-    cover: '/assets/intoTheSpiderverseC.jpg'
+    imageUrl: '/assets/infinityWar.jpg',
+    cover: '/assets/infinityWarC.jpg'
   }
 ];

@@ -38,12 +38,13 @@
       </div>
     </form>
     <div class="nav-item user">
-      <li *ngIf="!userService.isAuthenticated"><a class="nav-item btn btn-primary" [routerLink]="['/log-in']">Log In</a>
+      <li *ngIf="!this.userService.isAuthenticated"><a class="nav-item btn btn-primary" [routerLink]="['/log-in']">Log
+          In</a>
       </li>
-      <li *ngIf="userService.isAuthenticated" class="nav-item nav-link dropdown">
-        <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+      <li *ngIf="this.userService.isAuthenticated" class="nav-item nav-link dropdown">
+        <a class="nav-link  username dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
-          Hello {{userService.loggedInUser}}
+          Hello {{this.userService.loggedInUser}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/profile']">Edit Profile</a>

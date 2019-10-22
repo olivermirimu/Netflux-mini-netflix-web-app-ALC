@@ -13,18 +13,18 @@ export class FavouritesComponent implements OnInit {
   movie: MovieInterface;
 
   constructor(private userService: UserService, private movieService: MovieService) { }
-  //change user reffernce to * this.userService.loggedInUser.favourites;
-  //user = this.userService.loggedInUser;
+  // change user reffernce to * this.userService.loggedInUser.favourites;
+  // user = this.userService.loggedInUser;
   titles: string[] = this.userService.getUser('billy@x.com').favourites;
   fetchMovies() {
-    for (let i = 0; i < this.titles.length; i++) {
+    for (const i of this.titles) {
       this.movie = this.movieService.getMovie(this.titles[i]);
-      //console.log(this.movie)
-      //this.list.push(this.movie);
-      //return this.list;
+      // console.log(this.movie)
+      // this.list.push(this.movie);
+      // return this.list;
       console.log(this.list);
     }
-    //console.log(this.fetchMovies);
+    // console.log(this.fetchMovies);
     console.log(this.titles);
   }
   ngOnInit() {

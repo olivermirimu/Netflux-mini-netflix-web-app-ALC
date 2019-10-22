@@ -8,19 +8,17 @@ import { UserService } from '../user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  makeChanges = false;
   constructor(private userService: UserService) { }
   currentUser: UserInterface = this.userService.getUser('billy@x.com');
 
   saveChanges() {
     console.log('changes saved');
   }
-  makeChanges: boolean = false;
-  
-  editProfile(){
+  editProfile() {
     return this.makeChanges = true;
   }
-  //update to validate against new password
+  // update to validate against new password
   confirmPassword(confirmField) {
     this.currentUser.password === this.currentUser.confirmPassword ? confirmField.invalid = true : confirmField.invalid = false;
   }

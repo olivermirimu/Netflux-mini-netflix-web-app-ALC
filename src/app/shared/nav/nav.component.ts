@@ -10,17 +10,19 @@ import { MovieService } from 'src/app/movie/movie.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  filteredBy: string = "all";
+  // filteredBy: string = "all";
   searchTerm: string;
-  foundMovies: any; //movie list interface
+  foundMovies: any; // movie list interface
   constructor(private router: Router, private userService: UserService, private movieService: MovieService) { }
 
-  // searchMovie() {
-  //   this.movieService.searchMovies(this.searchTerm).subscribe(
-  //     movies => {this.foundMovies = movies;
-  //     console.log(this.foundMovies);
-  //     });
-  // }
+  searchMovie(searchTerm: string) {
+    // this.movieService.searchMovies(this.searchTerm).subscribe(
+    //   movies => {
+    //   this.foundMovies = movies;
+    //     console.log(this.foundMovies);
+    //   });
+    console.log('ok searching');
+  }
   ngOnInit() {
   }
 
