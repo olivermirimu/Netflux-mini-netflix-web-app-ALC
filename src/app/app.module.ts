@@ -42,7 +42,6 @@ import { FavouritesComponent } from './user/favourites/favourites.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

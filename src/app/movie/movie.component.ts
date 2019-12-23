@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MovieComponent implements OnInit {
   constructor(private movieService: MovieService, private route: ActivatedRoute) { }
-  
+
   movieTitle = this.movieService.getMovie(this.route.snapshot.params['title']);
 
   ngOnInit() {
@@ -18,6 +18,6 @@ export class MovieComponent implements OnInit {
     return this.moviesList;
   }
   
-  //hard codded 
+  // hard codded 
   moviesList = this.movieService.getMovies();
 }

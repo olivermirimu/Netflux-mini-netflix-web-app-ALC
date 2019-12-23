@@ -16,12 +16,8 @@ export class NavComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private movieService: MovieService) { }
 
   searchMovie(searchTerm: string) {
-    // this.movieService.searchMovies(this.searchTerm).subscribe(
-    //   movies => {
-    //   this.foundMovies = movies;
-    //     console.log(this.foundMovies);
-    //   });
-    console.log('ok searching');
+    // fff
+    console.log(`Searching for ${searchTerm}`);
   }
   ngOnInit() {
   }

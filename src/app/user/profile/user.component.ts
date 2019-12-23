@@ -11,6 +11,7 @@ export class UserComponent implements OnInit {
   makeChanges = false;
   constructor(private userService: UserService) { }
   currentUser: UserInterface = this.userService.getUser('billy@x.com');
+  // currentUser: UserInterface = this.userService.loggedInUser;
 
   saveChanges() {
     console.log('changes saved');
@@ -23,6 +24,7 @@ export class UserComponent implements OnInit {
     this.currentUser.password === this.currentUser.confirmPassword ? confirmField.invalid = true : confirmField.invalid = false;
   }
   ngOnInit() {
+    // console.log(this.userService.loggedInUser);
   }
 
 }

@@ -1,0 +1,22 @@
+{
+    "name" : "Netflux",
+    "short_name" : "Netflux",
+    "start_url" : "/",
+    "background_color" : "#3498DB",
+    "theme_color" : "#34495E",
+    "orientation" : "any",
+    "display" : "standalone",
+    "icons" : [{
+        "src" : "",
+        "type" : "image/png",        
+        "sizes" : ""
+    }],
+    "dir" : "ltr",
+    "lang" : "en-UK",
+    "description" : "A video streaming app",
+    "scope" : "/",
+    "serviceworker" : {
+        "src" : "",
+        "scope" : "/"
+    }
+}
