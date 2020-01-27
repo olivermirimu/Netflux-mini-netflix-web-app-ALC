@@ -11,7 +11,7 @@ import { MovieComponent } from './movie.component';
     CommonModule,
     RouterModule.forChild([
       { path: 'movie/:title', component: MovieComponent },
-      { path: 'movie', component: MovieComponent },      
+      { path: 'movie', component: MovieComponent },
       { path: 'movie/:name/watch', component: MovieComponent }
     ])
   ]

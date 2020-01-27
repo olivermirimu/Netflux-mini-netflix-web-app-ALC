@@ -11,14 +11,4 @@ export interface MovieInterface {
     awards?: string,
     imageUrl: string,
     cover: string
-
 }
-// export interface MovieListInterface {
-//     [{
-//         title: string,
-//         releaseYear: string,
-//         duration: string,
-//         rating: number,
-//         imageUrl: string,
-//     }]
-//}

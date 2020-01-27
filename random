@@ -1,0 +1,16 @@
+{
+Actors: [ ],
+_id: "5e2b4a84822741ee37adb68d",
+id: 2,
+title: "Spiderman (far form home)",
+releaseYear: "2019",
+duration: "2.1h",
+rating: "7 / 10",
+genre: "Action",
+director: "",
+writer: "",
+plot: "",
+awards: "",
+imageUrl: "/assets/intoTheSpiderverse.jpg",
+cover: "/assets/intoTheSpiderverseC.jpg"
+}

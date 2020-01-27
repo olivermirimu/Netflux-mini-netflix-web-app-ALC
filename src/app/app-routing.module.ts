@@ -15,8 +15,8 @@ import { BrowseComponent } from './browse/browse.component';
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent },
     // lazy loading below not functional
-    { path: 'movie', loadChildren: './movie/movie.module#MovieModule' },
-    { path: 'user', loadChildren: './user/user.module#UserModule' }
+    // { path: 'movie', loadChildren: './movie/movie.module#MovieModule' },
+    // { path: 'user', loadChildren: './user/user.module#UserModule' }
   ])],
   exports: [RouterModule]
 })
