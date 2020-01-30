@@ -22,6 +22,7 @@ import { MovieService } from './movie/movie.service';
 import { FavouritesComponent } from './user/favourites/favourites.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [MovieService],
+  providers: [MovieService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

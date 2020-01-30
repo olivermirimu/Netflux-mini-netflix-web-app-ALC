@@ -31,7 +31,6 @@ export class UserService {
   // the below doesn't work thus user isn't saved
   saveUser(user: UserInterface) {
     USERS.push(user);
-    // console.log(USERS);
   }
 
 }

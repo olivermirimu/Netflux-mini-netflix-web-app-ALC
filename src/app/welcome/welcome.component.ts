@@ -17,7 +17,7 @@ export class WelcomeComponent implements OnInit {
     niche1: '/assets/batwoman.jpg',
     niche2: '/assets/batwoman.jpg',
     niche3: '/assets/batwoman.jpg'
-  }
+  };
   ngOnInit() {
   }
 

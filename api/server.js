@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const Movie = require('./models/movieModel');
 const User = require('./models/userModel');
-const db = mongoose.connect('mongodb://localhost/movieAPI', {
+const db = mongoose.connect('mongodb://localhost/movieApi', {
   useNewUrlParser: true
 });
 mongoose.connection;
@@ -15,7 +15,6 @@ mongoose.connection;
 const app = express();
 const port = process.env.PORT || 3500;
 const apiRouter = require('./routes')(Movie, User);
-const movieList = require('./movies');
 
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({
@@ -23,7 +22,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-//routing
+//routing ->routes.js
 app.use('/', apiRouter);
 
 app.get('/', function (req, res) {

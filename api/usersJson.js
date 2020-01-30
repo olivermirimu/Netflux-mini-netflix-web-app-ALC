@@ -6,14 +6,14 @@ db.users.insertMany([{
     password: 'alpha',
   },
   {
-    firstName: 'billy',
+    firstName: 'nico',
     lastName: 'nico',
     email: 'nico@x.com',
     favourites: [],
     password: 'alpha',
   },
   {
-    firstName: 'billy',
+    firstName: 'olly',
     lastName: 'olly',
     email: 'olly@x.com',
     favourites: [],

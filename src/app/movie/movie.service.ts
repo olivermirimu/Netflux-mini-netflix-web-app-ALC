@@ -6,7 +6,7 @@ import { MovieComponent } from './movie.component';
 import * as movieList from './../../api/movies';
 import { HttpClient } from '@angular/common/http';
 
-const url = './../../api/movies';
+const url = 'localhost:3500/movies';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +15,7 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getMovies() {
-    // return this.http.get(url);
+    console.log(this.http.get(url));
     return movieList;
   }
   // get genres

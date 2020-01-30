@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie/movie.service';
 import { Observable, Timestamp } from 'rxjs';
+import { MovieInterface } from '../movie/movieInterface';
 
 @Component({
   selector: 'netflux-browse',
@@ -9,7 +10,7 @@ import { Observable, Timestamp } from 'rxjs';
   styleUrls: ['./browse.component.css']
 })
 export class BrowseComponent implements OnInit {
-  list: any[];
+  list;
   isSelected: string;
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) {
     this.list = this.movieService.getMovies();

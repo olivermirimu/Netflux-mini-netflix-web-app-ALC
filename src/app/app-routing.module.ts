@@ -12,7 +12,7 @@ import { BrowseComponent } from './browse/browse.component';
     { path: 'home', component: HomeComponent },
     { path: 'browse', component: BrowseComponent },
     { path: 'browse/:category', component: BrowseComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'welcome', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent },
     // lazy loading below not functional
     // { path: 'movie', loadChildren: './movie/movie.module#MovieModule' },
