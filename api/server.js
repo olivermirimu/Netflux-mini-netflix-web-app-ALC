@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 const Movie = require('./models/movieModel');
 const User = require('./models/userModel');
 const db = mongoose.connect('mongodb://localhost/movieApi', {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 mongoose.connection;
 

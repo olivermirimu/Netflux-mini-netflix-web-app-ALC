@@ -8,7 +8,9 @@ function routes(Movie, User) {
     .post((req, res) => {
       const user = new User(req.body);
 
-      user.save();
+      user.save().catch(err => {
+        console.log(err);
+      });
       return res.status(201).json(user);
     })
     .get((req, res) => {
@@ -36,42 +38,52 @@ function routes(Movie, User) {
   });
   //TODO: to be changed to username
   //TODO: put and patch methods failing at save
+
   apiRouter.route('/user/:firstName')
     .get((req, res) => res.json(req.user))
     .put((req, res) => {
-      const {
-        user
-      } = req;
-      user.firstName = req.body.firstName;
-      user.lastName = req.body.lastName;
-      user.email = req.body.email;
-      user.favourites = req.body.favourites;
-      user.password = req.body.password;
-      console.log(req.user);
-      req.user.save();
-    })
-    .patch((req, res) => {
-      const {
-        user
-      } = req;
-      if (req.body._id) {
-        delete req.body._id;
-      }
-      Object.entries(req.body).forEach(item => {
-        const key = item[0];
-        const value = item[1];
-        user[key] = value;
-      });
-      console.log(req.user);
-      req.user.create(err => {
+      User.findOneAndReplace({
+        firstName: req.params.firstName
+      }, req.user, (err, user) => {
         if (err) {
           return res.send(err);
         }
         return res.json(user);
       });
     })
+    .patch((req, res) => {
+      User.findOneAndUpdate({
+        firstName: req.params.firstName
+      }, req.body, (err, user) => {
+        if (err) {
+          return res.send(err);
+        }
+        console.log(user);
+        return res.json(user);
+      });
+      // const {
+      //   user
+      // } = req;
+      // if (req.body._id) {
+      //   delete req.body._id;
+      // }
+      // Object.entries(req.body).forEach(item => {
+      //   const key = item[0];
+      //   const value = item[1];
+      //   user[key] = value;
+      // });
+      // console.log(req.user);
+      // try {
+      //   req.user.save();
+      //   return res.json(user);
+      // } catch (err) {
+      //   res.send(err);
+      // }
+    })
     .delete((req, res) => {
-      req.user.deleteOne(err => {
+      User.findOneAndDelete({
+        firstName: req.params.firstName
+      }, err => {
         if (err) {
           return res.send(err);
         }
