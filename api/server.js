@@ -16,6 +16,7 @@ mongoose.connection;
 const app = express();
 const port = process.env.PORT || 3500;
 const apiRouter = require('./routes')(Movie, User);
+const genreRouter = require('./genreRoutes')(Movie);
 
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({
@@ -24,7 +25,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 //routing ->routes.js
-app.use('/', apiRouter);
+app.use('/api', apiRouter);
+app.use('/genre', genreRouter);
 
 app.get('/', function (req, res) {
   res.send('Welcome to my API');

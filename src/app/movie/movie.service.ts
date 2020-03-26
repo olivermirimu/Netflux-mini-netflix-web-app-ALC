@@ -1,54 +1,60 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { stringify } from '@angular/compiler/src/util';
 import { MovieInterface } from './movieInterface';
-import { MovieComponent } from './movie.component';
 import * as movieList from './../../api/movies';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
-const url = 'localhost:3500/movies';
+const url = '/api/movies';
 @Injectable({
   providedIn: 'root'
 })
 
 export class MovieService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  getMovies() {
-    console.log(this.http.get(url));
-    return movieList;
+  getMovies(): Observable<MovieInterface[]> {
+    return this.http.get<MovieInterface[]>(url)
+      .pipe(catchError(this.handleErrors<MovieInterface[]>('getMovies', [])));
+  }
+  // TODO: change api calls toLocalLowercase: compartibility issues
+  getMovie(choice: any): Observable<MovieInterface> {
+    return this.http.get<MovieInterface>(`/api/movie/${choice}`);
   }
   // get genres
-  getComedy() {
-    return movieList.find(comedy => {
-      return comedy.genre === 'comedy';
-    });
-  }
-  getDrama() {
-    return movieList.find(drama => {
-      return drama.genre === 'drama';
-    });
-  }
-  getAction() {
-    return movieList.find(action => {
-      return action.genre === 'action';
-    });
+  getGenre(genre) {
+    return this.http.get<MovieInterface[]>(`/api/genre/${genre}`);
   }
 
-  getMovie(choice: any) {
-    return movieList.find(movie => movie.title === choice);
+  getDetails(title) {
+    this.router.navigate(['/movie', title]);
   }
   searchMovies(searchTerm: string) {
-    // let term = searchTerm.toLocaleLowerCase();
-    // let results: MovieInterface[] = [];
+    const term = searchTerm.toLocaleLowerCase();
+    let results: MovieInterface[] = [];
 
-    // MOVIES.forEach( movie => {
-    //   let matchingMovies = movie.title.toLocaleLowerCase().indexOf(term) > -1;
-    //   matchingMovies = matchingMovies.map( (event: any) => {
-    //     event.movieTitle = movie.title;
-    //     return movie;
-    //   })
-    // })
+    let matchingMovies = movieList.filter((movie: MovieInterface) =>
+      movie.title.toLocaleLowerCase().indexOf(term) > -1);
+
+    matchingMovies = matchingMovies.map((movie: any) => {
+      movie.title = movie.title;
+      return movie;
+    });
+    results = results.concat(matchingMovies);
+    const emitter: EventEmitter<any> = new EventEmitter(true);
+    setTimeout(() => {
+      emitter.emit(results);
+    }, 100);
+    return emitter;
+  }
+
+  // Error handling
+  private handleErrors<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }
 

@@ -1,0 +1,12 @@
+<netflux-nav></netflux-nav>
+<section class="container-fluid movies row">
+  <!-- <p [hidden]="true" class="" ([ngModel])="choice"></p> -->
+  <div class="card" name="movie" class="card thumb col-sm-auto" *ngFor="let movie of list"
+    (click)="getMovieDetails(movie.title)">
+    <img [src]="movie.imageUrl" class="card-img-top" [alt]="movie.title">
+    <div class="card-body">
+      <p class="card-text">{{movie.title}}</p>
+    </div>
+  </div>
+</section>
+<netflux-footer></netflux-footer>

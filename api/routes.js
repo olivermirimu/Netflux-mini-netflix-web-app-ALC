@@ -7,7 +7,6 @@ function routes(Movie, User) {
   apiRouter.route('/users')
     .post((req, res) => {
       const user = new User(req.body);
-
       user.save().catch(err => {
         console.log(err);
       });
@@ -22,9 +21,9 @@ function routes(Movie, User) {
       });
     });
 
-  apiRouter.use('/user/:firstName', (req, res, next) => {
+  apiRouter.use('/user/:email', (req, res, next) => {
     User.find({
-      firstName: req.params.firstName
+      email: req.params.email
     }, (err, user) => {
       if (err) {
         return res.send(err);
@@ -36,14 +35,14 @@ function routes(Movie, User) {
       return res.sendStatus(404);
     });
   });
-  //TODO: to be changed to username
+  //TODO: to be changed to username or email or third party verification
   //TODO: put and patch methods failing at save
 
-  apiRouter.route('/user/:firstName')
+  apiRouter.route('/user/:email')
     .get((req, res) => res.json(req.user))
     .put((req, res) => {
       User.findOneAndReplace({
-        firstName: req.params.firstName
+        email: req.params.email
       }, req.user, (err, user) => {
         if (err) {
           return res.send(err);
@@ -53,7 +52,7 @@ function routes(Movie, User) {
     })
     .patch((req, res) => {
       User.findOneAndUpdate({
-        firstName: req.params.firstName
+        email: req.params.email
       }, req.body, (err, user) => {
         if (err) {
           return res.send(err);
@@ -82,7 +81,7 @@ function routes(Movie, User) {
     })
     .delete((req, res) => {
       User.findOneAndDelete({
-        firstName: req.params.firstName
+        email: req.params.email
       }, err => {
         if (err) {
           return res.send(err);
@@ -103,7 +102,7 @@ function routes(Movie, User) {
           let newMovie = movie.toJSON();
           newMovie.links = {};
           const title = movie.title.split(' ').join('%20');
-          newMovie.links.self = `http://${req.headers.host}/movie/${title}`;
+          newMovie.links.self = `http://${req.headers.host}/api/movie/${title}`;
           return newMovie;
         });
         return res.json(returnMovies);
@@ -121,6 +120,45 @@ function routes(Movie, User) {
         return res.json(movies);
       });
     });
+  /*get by genre*/
+  apiRouter.route('/genre/:genre').get((req, res) => {
+    Movie.find({
+      genre: req.params.genre
+    }, (err, movies) => {
+      if (err) {
+        return res.send(err);
+      }
+      const retrunMovies = movies.map(movie => {
+        let newMovie = movie.toJSON();
+        newMovie.links = {};
+        const title = movie.title.split(' ').join('%20');
+        newMovie.links.self = `http://${req.headers.host}/api/movie/${title}`;
+        return newMovie;
+      });
+      return res.json(retrunMovies);
+    });
+  });
+  /*search*/
+  apiRouter.route('/search/:searchTerm').get((req, res) => {
+    const searchTerm = req.params.searchTerm;
+    Movie.find({
+      title: /searchTerm/
+
+    }, (err, movies) => {
+      if (err) {
+        return res.send(err);
+      }
+      const returnMovies = movies.map(movie => {
+        let newMovie = movie.toJSON();
+        newMovie.links = {};
+        const title = movie.title.split(' ').join('%20');
+        newMovie.links.self = `http://${req.headers.host}/api/movie/${title}`;
+        return newMovie;
+      });
+      return res.json(returnMovies);
+      res.send();
+    });
+  });
   return apiRouter;
 }
 

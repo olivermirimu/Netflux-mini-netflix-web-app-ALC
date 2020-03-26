@@ -6,17 +6,9 @@
 <netflux-nav></netflux-nav>
 <section class="current container-fluid homeSlider">
   <div class="bd-example">
-    <div
-      id="carouselExampleCaptions"
-      class="carousel slide"
-      data-ride="carousel"
-    >
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li
-          data-target="#carouselExampleCaptions"
-          data-slide-to="0"
-          class="active"
-        ></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
       </ol>
@@ -45,21 +37,11 @@
           </div>
         </div>
       </div>
-      <a
-        class="carousel-control-prev"
-        href="#carouselExampleCaptions"
-        role="button"
-        data-slide="prev"
-      >
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a
-        class="carousel-control-next"
-        href="#carouselExampleCaptions"
-        role="button"
-        data-slide="next"
-      >
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -67,9 +49,8 @@
   </div>
 </section>
 <section class="container-fluid movies row">
-  <p [hidden]="true" class="" ([ngModel])="choice"></p>
-  <div class="card" name="movie" class="card thumb col-sm-auto"
-    *ngFor="let movie of list" (click)="getDetails(movie.title)">
+  <!-- <p [hidden]="true" class="" ([ngModel])="choice"></p> -->
+  <div name="movie" class="card thumb col-sm-auto" *ngFor="let movie of list" (click)="getMovieDetails(movie.title)">
     <img [src]="movie.imageUrl" class="card-img-top" [alt]="movie.title">
     <div class="card-body">
       <p class="card-text">{{movie.title}}</p>

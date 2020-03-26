@@ -12,6 +12,7 @@ import { UserService } from '../user.service';
 })
 export class SignUpComponent implements OnInit {
   isDirty = true;
+  userExists: boolean;
   constructor(private router: Router, private userService: UserService) { }
   userDetails: UserInterface = {
     id: null,
@@ -31,16 +32,35 @@ export class SignUpComponent implements OnInit {
   isActive() {
     this.userService.getUser(this.userDetails.email) ? console.log() : console.log(false);
   }
-  registerUser() {
-    this.userService.saveUser(this.userDetails);
-    this.isActive();
-    alert(`${this.userDetails.firstName} registered successfully`);
-    this.router.navigate(['/home']);
-    // this.router.navigate(['/success']); * to be implemented
-    // this.isDirty = false;
-    // this.router.navigate(['/home']);
-    // console.log(this.userService.USERS); working but not adding
+  // TODO: Clean up split to two functions
+  verificationAndRegistration() {
+    this.userService.getUser(this.userDetails.email).subscribe((response: UserInterface) => {
+      if (response[0] === undefined || response[0].email !== this.userDetails.email) {
+        this.userExists = false;
+      } else if (response[0].email === this.userDetails.email) {
+        alert(`Sorry! Another account with the email ${this.userDetails.email} already exists`);
+        this.userExists = true;
+      }
+    }, err => { throw new Error(err); }, () => {
+      if (!this.userExists) {
+        this.registerUser();
+      }
+    });
+    // this.isActive();
+    // TODO:this.router.navigate(['/success']); //add activation redirect in future
   }
+
+  registerUser() {
+    this.userService.saveUser(this.userDetails).subscribe((savedDetails) => {
+      alert(`${this.userDetails.firstName} you have registered successfully`);
+      this.isActive();
+      this.isDirty = false;
+      this.userService.loggedInUser = this.userDetails;
+      this.router.navigate(['/home']);
+      console.log(this.userService.loggedInUser);
+    });
+  }
+
   confirmPassword(confirmField) {
     this.userDetails.password === this.userDetails.confirmPassword ? confirmField.invalid = true : confirmField.invalid = false;
   }
@@ -48,7 +68,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.registerUser();
+    this.verificationAndRegistration();
     // this.isActive ? console.log('email already exists') : this.registerUser();
     // console.log(this.userDetails);
   }

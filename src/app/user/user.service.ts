@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UserInterface } from './userInterface';
-import * as USERS from './../../api/users';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,31 +10,36 @@ import * as USERS from './../../api/users';
 export class UserService {
   currentUser: UserInterface;
   isAuthenticated: boolean;
-  loggedInUser: string;
+  loggedInUser: UserInterface = null;
   userName: string;
-  constructor() { }
-  getUser(email: string) {
-    return USERS.find(user => user.email === email);
+  fetchDetails: any;
+  userExists: boolean;
+
+  constructor(private http: HttpClient, private router: Router) { }
+  getUser(email: string): Observable<UserInterface> {
+    return this.http.get<UserInterface>(`api/user/${email}`);
   }
 
-  logInUser(email: string, pass: string) {
-    // change to show invalid email or mpassword and allocate object to
-    USERS.find(user => user.email === email) ? this.currentUser = USERS.find(user => user.email === email) : this.currentUser = null;
-    (this.currentUser.password === pass) ? console.log(`Welcome ${this.currentUser.firstName}`) : this.isAuthenticated = false;
-    (user => user.email === email) && (this.currentUser.password === pass) ? this.isAuthenticated = true : this.isAuthenticated = false;
-    if ((user => user.email === email) && (this.currentUser.password === pass)) {
-      sessionStorage.setItem(this.loggedInUser, this.currentUser.firstName);
-      // sessionStorage.setItem(this.loggedInUser, this.currentUser.firstName)
-      this.loggedInUser = sessionStorage.getItem(this.loggedInUser);
-      this.loggedInUser ? this.isAuthenticated = true : this.isAuthenticated = false;
-    }
+  async authenticateUser(email: string, pass: string) {
+    await this.getUser(email).toPromise().then((user: UserInterface) => {
+      if (user[0].password === pass) {
+        this.isAuthenticated = true;
+        alert(`Hello ${user[0].firstName} Welcome back`);
+        this.loggedInUser = user[0];
+      } else {
+        this.isAuthenticated = false;
+      }
+    }).catch((err: any) => {
+      throw new Error(err);
+      this.isAuthenticated = false;
+    });
+    this.isAuthenticated ? this.router.navigate(['/home']) : alert(`Sorry password or email you entered is incorect`);
   }
+  // TODO: Session storage function (login and after signup + persist details)
+  // implement cookies for sychronization across devices
 
-  // the below doesn't work thus user isn't saved
-  saveUser(user: UserInterface) {
-    USERS.push(user);
+  saveUser(user: UserInterface): Observable<UserInterface> {
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.post<UserInterface>(`api/users`, user, options);
   }
-
 }
-
-

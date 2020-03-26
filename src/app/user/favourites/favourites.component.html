@@ -1,9 +1,8 @@
 <section class="container-fluid">
   <h2>My Favourites</h2>
-  <button (click)="fetchMovies()" class="btn btn-primary">click</button>
   <div class="row">
     <div class="card" name="movie" class="card thumb col-sm-auto" *ngFor="let movie of list"
-      (click)="getDetails(movie.title)">
+      (click)="getMovieDetails(movie.title)">
       <img [src]="movie.imageUrl" class="card-img-top" [alt]="movie.title">
       <div class="card-body">
       </div>

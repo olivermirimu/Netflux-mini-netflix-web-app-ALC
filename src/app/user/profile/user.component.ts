@@ -9,8 +9,23 @@ import { UserService } from '../user.service';
 })
 export class UserComponent implements OnInit {
   makeChanges = false;
-  constructor(private userService: UserService) { }
-  currentUser: UserInterface = this.userService.getUser('billy@x.com');
+  currentUser: UserInterface = {
+    id: null,
+    firstName: null,
+    lastName: null,
+    email: null,
+    favourites: [],
+    // subscription: null,
+    // card: null,
+    password: null,
+    confirmPassword: null,
+    tnC: null
+  };
+  constructor(private userService: UserService) {
+    this.userService.getUser(this.userService.loggedInUser.email).subscribe((user: UserInterface) => {
+      this.currentUser = user[0];
+    }, (err: any) => console.warn(err));
+  }
   // currentUser: UserInterface = this.userService.loggedInUser;
 
   saveChanges() {

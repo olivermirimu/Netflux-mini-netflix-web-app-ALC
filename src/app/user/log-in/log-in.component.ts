@@ -9,19 +9,18 @@ import { UserService } from '../user.service';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  log;
+  log = {
+    email: null,
+    password: null
+  };
   constructor(private router: Router, private userService: UserService) { }
   ngOnInit() {
-    this.log = {
-      email: null,
-      password: null
-    };
   }
   logIn() {
-    this.userService.logInUser(this.log.email, this.log.password);
+    this.userService.authenticateUser(this.log.email, this.log.password);
   }
-  onSubmit(logForm: NgForm) {
+
+  async onSubmit(logForm: NgForm) {
     this.logIn();
-    this.userService.isAuthenticated ? this.router.navigate(['/home']) : alert('Invalid user');
   }
 }

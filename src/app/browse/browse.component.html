@@ -1,9 +1,11 @@
 <netflux-nav></netflux-nav>
-<section class="container-fluid">  
-    <h2>Action</h2>
-    <div class="row">
+
+<hr>
+<section class="container-fluid">
+  <h2>Search Results</h2>
+  <div class="row">
     <div class="card" name="movie" class="card thumb col-sm-auto" *ngFor="let movie of list"
-      (click)="getDetails(movie.title)" >
+      (click)="getDetails(movie.title)">
       <img [src]="movie.imageUrl" class="card-img-top" [alt]="movie.title">
       <div class="card-body">
         <p class="card-text">{{movie.title}}</p>
@@ -12,28 +14,3 @@
   </div>
 </section>
 <hr>
-<section class="container-fluid">  
-  <h2>Drama</h2>
-  <div class="row">
-  <div class="card" name="movie" class="card thumb col-sm-auto" *ngFor="let movie of list"
-    (click)="getDetails(movie.title)" >
-    <img [src]="movie.imageUrl" class="card-img-top" [alt]="movie.title">
-    <div class="card-body">
-      <p class="card-text">{{movie.title}}</p>
-    </div>
-  </div>
-</div>
-</section>
-<hr>
-<section class="container-fluid">  
-  <h2>Comedy</h2>
-  <div class="row">
-  <div class="card" name="movie" class="card thumb col-sm-auto" *ngFor="let movie of list"
-    (click)="getDetails(movie.title)" >
-    <img [src]="movie.imageUrl" class="card-img-top" [alt]="movie.title">
-    <div class="card-body">
-      <p class="card-text">{{movie.title}}</p>
-    </div>
-  </div>
-</div>
-</section>

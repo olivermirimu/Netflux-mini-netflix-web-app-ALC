@@ -23,6 +23,7 @@ import { FavouritesComponent } from './user/favourites/favourites.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AuthService } from './user/auth.service';
+import { GenreComponent } from './movie/genre/genre.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthService } from './user/auth.service';
     MovieComponent,
     PageNotFoundComponent,
     WelcomeComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    GenreComponent
   ],
   imports: [
     BrowserModule,

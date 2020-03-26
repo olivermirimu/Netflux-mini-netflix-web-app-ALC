@@ -16,8 +16,14 @@ export class WelcomeComponent implements OnInit {
     action: '/assets/farFromHomeC.jpg',
     niche1: '/assets/batwoman.jpg',
     niche2: '/assets/batwoman.jpg',
-    niche3: '/assets/batwoman.jpg'
+    niche3: '/assets/batwoman.jpg',
+    boilerplate: '/assets/random.png'
   };
+  niches = [
+    { name: '', text: 'niche 1', image: this.coverImages.niche1 },
+    { name: '', text: 'niche 2', image: this.coverImages.niche2 },
+    { name: '', text: 'niche 3', image: this.coverImages.niche3 }
+  ];
   ngOnInit() {
   }
 

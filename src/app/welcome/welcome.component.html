@@ -60,8 +60,17 @@
     </div>
   </div>
 </section>
-<section class="niche container-fluid">
+<section class="niches container-fluid">
   <h2>Benefits</h2>
+  <div class="niche row">
+    <div class="benefits col-sm-auto" *ngFor="let niche of niches">
+      <div class="niche-specific">
+        <img [src]="niche.image" alt="" class="niche-image">
+        <p class="niche-text">{{niche.text}}</p>
+      </div>
+    </div>
+  </div>
+  <!--   
   <div id="carouselExampleSlidesOnly" class="carousel slide nicheSlide col-md-auto" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -100,7 +109,7 @@
         <img [src]="coverImages.niche1" class="d-block w-100" alt="...">
       </div>
     </div>
-  </div>
+  </div> -->
 </section>
 <netflux-footer>
   <netflux-footer>

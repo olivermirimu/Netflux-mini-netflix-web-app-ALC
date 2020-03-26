@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie/movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MovieInterface } from '../movie/movieInterface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'netflux-home',
@@ -8,12 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  list: any[];
+  list: MovieInterface[];
   movieTitle: any;
   isSelected: any;
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) {
-    this.list = this.movieService.getMovies();
-    // this.route.snapshot.params
+    this.movieService.getMovies().subscribe(movies => {
+      this.list = movies;
+    }, err => console.error(err));
   }
 
   slider = {
@@ -21,12 +24,9 @@ export class HomeComponent implements OnInit {
     slide2: 'assets/infinityWarC.jpg',
     slide3: 'assets/shazamC.jpg'
   };
-  getDetails(title) {
-    this.isSelected = title;
-    console.log(this.isSelected);
-    this.router.navigate(['/movie', this.isSelected]);
+  getMovieDetails(title) {
+    this.movieService.getDetails(title);
   }
   ngOnInit() {
-    // this.movieTitle = this.movieService.getMovie(1);
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { MovieService } from 'src/app/movie/movie.service';
 import { MovieInterface } from 'src/app/movie/movieInterface';
+import { UserInterface } from '../userInterface';
+import { isObject, isArray } from 'util';
 
 @Component({
   selector: 'netflux-favourites',
@@ -9,26 +11,34 @@ import { MovieInterface } from 'src/app/movie/movieInterface';
   styleUrls: ['./favourites.component.css']
 })
 export class FavouritesComponent implements OnInit {
-  list: MovieInterface[];
-  movie: MovieInterface;
+  list: MovieInterface[] = [];
+  titles: string[] = [];
 
   constructor(private userService: UserService, private movieService: MovieService) { }
   // change user reffernce to * this.userService.loggedInUser.favourites;
-  // user = this.userService.loggedInUser;
-  titles: string[] = this.userService.getUser('billy@x.com').favourites;
+  getFavourites() {
+    this.userService.getUser(this.userService.loggedInUser.email).subscribe((user: UserInterface) => {
+      this.titles = user[0].favourites;
+    }, err => console.error(err),
+      () => { this.fetchMovies(); });
+  }
+
   fetchMovies() {
-    for (const i of this.titles) {
-      this.movie = this.movieService.getMovie(this.titles[i]);
-      // console.log(this.movie)
-      // this.list.push(this.movie);
-      // return this.list;
-      console.log(this.list);
+    for (let title of this.titles) {
+      this.movieService.getMovie(title).subscribe((movie: MovieInterface) => {
+        if (movie !== null) {
+          this.list = this.list.concat(movie);
+        } else {
+          console.log(`it is lonely in here`);
+        }
+      }, err => console.error(err));
     }
-    // console.log(this.fetchMovies);
-    console.log(this.titles);
   }
+  getMovieDetails(title) {
+    this.movieService.getDetails(title);
+  }
+
   ngOnInit() {
-
+    this.getFavourites();
   }
-
 }
