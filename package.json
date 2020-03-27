@@ -77,5 +77,8 @@
       "NODE_ENV": "development",
       "PORT": 3500
     }
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
